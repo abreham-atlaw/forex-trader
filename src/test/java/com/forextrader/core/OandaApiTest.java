@@ -11,9 +11,6 @@ import org.junit.jupiter.api.Test;
 
 public class OandaApiTest {
 
-	public static final String TOKEN = "c8de3c1a86b7a9e4d992c2adcc3dd824-bfcf0b5edfd5215a55e12f3037c7695b";
-	public static final String URI = "https://api-fxpractice.oanda.com";
-
 	@Test
 	public void accountSummaryTest(){
 
