@@ -16,7 +16,6 @@ public class TraderTest {
 	private static Trader trader;
 	private static final String BASE_CURRENCY = "USD";
 	private static final String QUOTE_CURRENCY = "CNH";
-	private static final String CLOSE_ORDER_ID = "93";
 
 
 	@BeforeAll
