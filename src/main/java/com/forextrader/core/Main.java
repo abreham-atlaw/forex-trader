@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args){
 
-		AutoTrader trader = new AutoTrader(Config.TEST_ACCOUNT_ID);
+		AutoTrader trader = new AutoTrader(Config.ACCOUNT_ID);
 		trader.start();
 
 	}
