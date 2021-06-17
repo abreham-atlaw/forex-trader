@@ -1,7 +1,6 @@
 import com.forextrader.core.Config;
 import com.forextrader.core.network.ApiClient;
 import com.oanda.v20.Context;
-import com.oanda.v20.ContextBuilder;
 import com.oanda.v20.ExecuteException;
 import com.oanda.v20.RequestException;
 import com.oanda.v20.account.AccountSummary;
