@@ -25,9 +25,9 @@ import java.util.List;
 
 public class Trader {
 
-	PredictionApiInterface apiInterface;
-	AccountID accountId;
-	Context context;
+	final PredictionApiInterface apiInterface;
+	final AccountID accountId;
+	final Context context;
 
 	public Trader(AccountID accountId){
 		this.accountId = accountId;
