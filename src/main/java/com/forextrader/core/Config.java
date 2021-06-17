@@ -10,9 +10,9 @@ import java.util.List;
 public class Config {
 	public static final LocalDateTime PROGRAM_START_DATE = LocalDateTime.now();
 
-	public static final boolean DEBUG = true;
+	public static final boolean DEBUG = false;
 	public static final int NETWORK_RETRIES = 5;
-	public static final int NETWORK_SLEEP = 120000; //IN MICRO SECONDS
+	public static final int NETWORK_SLEEP = 2*60*1000;
 	public static final String LOG_PATH = "./trader.log";
 	public static final boolean CONSOLE_LOG = true;
 	public static final int TRADE_PERIOD_GAP = 24*60*60*1000;
@@ -53,13 +53,5 @@ public class Config {
 		//	"TWD",  // Taiwan
 			"GBP"   // United Kingdom -
 	));
-
-	//WebServer Configs
-	public static final String SERVER_PORT = (System.getenv("PORT"));
-	public static final String SERVER_ADDRESS = "0.0.0.0";
-
-	//AntiIdling Configs
-	public static final String SERVER_URL = "https://forex-trader.herokuapp.com/";
-	public static final int CURL_GAP = 30*1000;
 
 }

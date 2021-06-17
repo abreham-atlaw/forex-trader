@@ -27,7 +27,7 @@ dependencies {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'com.forextrader.webserver.DummyServer'
+                'Main-Class': 'com.forextrader.core.Main'
         )
     }
     from {
