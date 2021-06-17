@@ -1,6 +1,5 @@
 package com.forextrader.core;
 
-import com.forextrader.core.Config;
 import com.forextrader.core.network.ApiClient;
 import com.oanda.v20.Context;
 import com.oanda.v20.ExecuteException;
