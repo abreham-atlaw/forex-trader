@@ -25,15 +25,6 @@ public class TraderTest {
 	}
 
 	@Test
-	void testToken(){
-		if(Config.TOKEN == null) {
-			Log.LOGGER.severe("[-]OANDA_TOKEN not set in system environment.");
-			Assertions.fail();
-		}
-		Log.LOGGER.info("[+]Token found.");
-	}
-
-	@Test
 	void testGetPrediction() throws IOException, InterruptedException{
 		Prediction prediction = trader.getPrediction(BASE_CURRENCY, QUOTE_CURRENCY);
 		Assertions.assertEquals(BASE_CURRENCY, prediction.getBaseCurrency());
