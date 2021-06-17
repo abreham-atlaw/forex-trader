@@ -25,9 +25,12 @@ public class TraderTest {
 	}
 
 	@Test
-	void testGetUnits(){
-		int units = trader.getUnits();
-		System.out.println(units);
+	void testToken(){
+		if(Config.TOKEN == null) {
+			Log.LOGGER.severe("[-]OANDA_TOKEN not set in system environment.");
+			Assertions.fail();
+		}
+		Log.LOGGER.info("[+]Token found.");
 	}
 
 	@Test
