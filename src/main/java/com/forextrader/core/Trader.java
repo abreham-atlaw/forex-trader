@@ -3,7 +3,7 @@ package com.forextrader.core;
 import com.forextrader.core.data.Prediction;
 import com.forextrader.core.exceptions.InstrumentUnavailableException;
 import com.forextrader.core.network.ApiClient;
-import com.forextrader.core.network.NetworkTask;
+import com.forextrader.core.network.RetrofitNetworkTask;
 import com.forextrader.core.network.PredictionApiInterface;
 import com.oanda.v20.Context;
 import com.oanda.v20.ExecuteException;
@@ -36,7 +36,7 @@ public class Trader {
 	}
 
 	public Prediction getPrediction(String baseCurrency, String quoteCurrency) throws IOException, InterruptedException {
-		return new NetworkTask<Prediction>(){
+		return new RetrofitNetworkTask<Prediction>(){
 
 			@Override
 			public Call<Prediction> getCall() {

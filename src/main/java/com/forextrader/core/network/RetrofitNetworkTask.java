@@ -6,15 +6,15 @@ import retrofit2.Call;
 
 import java.io.IOException;
 
-abstract public class NetworkTask<T> {
+abstract public class RetrofitNetworkTask<T> {
 
 	private int retries;
 
-	public NetworkTask(int retries){
+	public RetrofitNetworkTask(int retries){
 		this.retries = retries;
 	}
 
-	public NetworkTask(){
+	public RetrofitNetworkTask(){
 		this.retries = Config.NETWORK_RETRIES;
 	}
 

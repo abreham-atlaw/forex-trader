@@ -8,7 +8,7 @@ import retrofit2.Call;
 
 import java.io.IOException;
 
-public class NetworkTaskTest {
+public class RetrofitNetworkTaskTest {
 
 	private static PredictionApiInterface apiInterface;
 
@@ -19,7 +19,7 @@ public class NetworkTaskTest {
 
 	@Test
 	public void testSuccessfulTask() throws IOException, InterruptedException{
-		Prediction prediction = new NetworkTask<Prediction>(){
+		Prediction prediction = new RetrofitNetworkTask<Prediction>(){
 
 			@Override
 			public Call<Prediction> getCall() {
