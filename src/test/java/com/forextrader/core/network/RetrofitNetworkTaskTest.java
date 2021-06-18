@@ -18,14 +18,14 @@ public class RetrofitNetworkTaskTest {
 	}
 
 	@Test
-	public void testSuccessfulTask() throws IOException, InterruptedException{
+	public void testSuccessfulTask() throws InterruptedException, NetworkException {
 		Prediction prediction = new RetrofitNetworkTask<Prediction>(){
 
 			@Override
 			public Call<Prediction> getCall() {
 				return apiInterface.fetchPrediction("USD", "EUR");
 			}
-		}.execute();
+		}.run();
 
 		Assertions.assertEquals("USD", prediction.getBaseCurrency());
 		Assertions.assertEquals("EUR", prediction.getQuoteCurrency());

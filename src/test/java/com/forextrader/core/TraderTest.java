@@ -2,14 +2,11 @@ package com.forextrader.core;
 
 import com.forextrader.core.data.Prediction;
 import com.forextrader.core.exceptions.InstrumentUnavailableException;
-import com.oanda.v20.ExecuteException;
-import com.oanda.v20.RequestException;
-import com.oanda.v20.transaction.TransactionID;
+import com.forextrader.core.network.NetworkException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 
 public class TraderTest {
 
@@ -24,29 +21,29 @@ public class TraderTest {
 	}
 
 	@Test
-	void testGetPrediction() throws IOException, InterruptedException{
+	void testGetPrediction() throws InterruptedException, NetworkException {
 		Prediction prediction = trader.getPrediction(BASE_CURRENCY, QUOTE_CURRENCY);
 		Assertions.assertEquals(BASE_CURRENCY, prediction.getBaseCurrency());
 	}
 
 	@Test
-	void testGetAction() throws IOException, InterruptedException{
+	void testGetAction() throws InterruptedException, NetworkException {
 		Trader.TradeAction action = trader.getAction(BASE_CURRENCY, QUOTE_CURRENCY);
 		Assertions.assertEquals(Trader.TradeAction.SELL, action);
 	}
 
 	@Test
-	void testMakeOrder() throws ExecuteException, RequestException, InstrumentUnavailableException {
-		TransactionID id = trader.makeOrder(BASE_CURRENCY, QUOTE_CURRENCY, Trader.TradeAction.BUY);
+	void testMakeOrder() throws InstrumentUnavailableException, InterruptedException, NetworkException {
+		trader.makeOrder(BASE_CURRENCY, QUOTE_CURRENCY, Trader.TradeAction.BUY);
 	}
 
 	@Test
-	void testTrade() throws ExecuteException, IOException, RequestException, InterruptedException, InstrumentUnavailableException {
+	void testTrade() throws InterruptedException, InstrumentUnavailableException, NetworkException {
 		trader.trade(BASE_CURRENCY, QUOTE_CURRENCY);
 	}
 
 	@Test
-	void testCloseAllOrders() throws ExecuteException, RequestException {
+	void testCloseAllOrders() throws NetworkException, InterruptedException {
 		trader.closeAllOpenTrades();
 	}
 
