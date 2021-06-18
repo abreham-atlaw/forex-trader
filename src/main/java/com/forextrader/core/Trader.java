@@ -132,7 +132,7 @@ public class Trader {
 	}
 
 	public void closeAllOpenTrades() throws NetworkException, InterruptedException {
-		Log.LOGGER.info(String.format("[+]Closing all trades..."));
+		Log.LOGGER.info("[+]Closing all trades...");
 
 
 		List<Trade> openTrades = new OandaNetworkTask<List<Trade>>(){
