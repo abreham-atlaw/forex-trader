@@ -9,7 +9,7 @@ public class AutoTraderTest {
 
 	@BeforeAll
 	static void setup(){
-		trader = new AutoTrader(Config.ACCOUNT_ID);
+		trader = new AutoTrader(Config.TEST_ACCOUNT_ID);
 	}
 
 	@Test

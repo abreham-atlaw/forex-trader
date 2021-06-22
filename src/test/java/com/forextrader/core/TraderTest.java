@@ -17,19 +17,13 @@ public class TraderTest {
 
 	@BeforeAll
 	static void setup(){
-		trader = new Trader(Config.ACCOUNT_ID);
+		trader = new Trader(Config.TEST_ACCOUNT_ID);
 	}
 
 	@Test
 	void testGetPrediction() throws InterruptedException, NetworkException {
 		Prediction prediction = trader.getPrediction(BASE_CURRENCY, QUOTE_CURRENCY);
-		Assertions.assertEquals(BASE_CURRENCY, prediction.getBaseCurrency());
-	}
-
-	@Test
-	void testGetAction() throws InterruptedException, NetworkException {
-		Trader.TradeAction action = trader.getAction(BASE_CURRENCY, QUOTE_CURRENCY);
-		Assertions.assertEquals(Trader.TradeAction.SELL, action);
+		Assertions.assertNotNull(prediction);
 	}
 
 	@Test
