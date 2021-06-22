@@ -161,7 +161,7 @@ public class Trader {
 
 	public int getUnits(){
 		Log.LOGGER.info("Getting Units...");
-		return (1000/Config.CURRENCIES.size());
+		return (5000/Config.CURRENCIES.size());
 	}
 
 	public enum TradeAction {
