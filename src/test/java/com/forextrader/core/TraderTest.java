@@ -17,7 +17,7 @@ public class TraderTest {
 
 	@BeforeAll
 	static void setup(){
-		trader = new Trader(Config.TEST_ACCOUNT_ID);
+		trader = new Trader(Config.PREDICTOR_CONFIGS.get(0));
 	}
 
 	@Test

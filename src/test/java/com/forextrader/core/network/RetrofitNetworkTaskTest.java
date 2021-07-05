@@ -23,7 +23,8 @@ public class RetrofitNetworkTaskTest {
 
 			@Override
 			public Call<Prediction> getCall() {
-				return apiInterface.fetchPrediction("USD", "EUR");
+				return apiInterface.fetchPrediction("USD", "EUR", "0");
+
 			}
 		}.run();
 

@@ -20,7 +20,7 @@ public class OandaApiTest {
 		AccountSummary summary = new OandaNetworkTask<AccountSummaryResponse>() {
 			@Override
 			public AccountSummaryResponse executeTask() throws ExecuteException, RequestException {
-				return context.account.summary(Config.ACCOUNT_ID);
+				return context.account.summary(Config.TEST_PREDICTOR_CONFIGS.get(0).getAccountID());
 			}
 		}.run().getAccount();
 		System.out.println(summary);

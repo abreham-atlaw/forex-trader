@@ -6,7 +6,6 @@ import com.forextrader.core.network.*;
 import com.oanda.v20.Context;
 import com.oanda.v20.ExecuteException;
 import com.oanda.v20.RequestException;
-import com.oanda.v20.account.AccountID;
 import com.oanda.v20.order.MarketOrderRequest;
 import com.oanda.v20.order.OrderCreateRequest;
 import com.oanda.v20.order.OrderCreateResponse;
@@ -24,11 +23,11 @@ import java.util.List;
 public class Trader {
 
 	final PredictionApiInterface apiInterface;
-	final AccountID accountId;
 	final Context context;
+	final Config.PredictorConfig config;
 
-	public Trader(AccountID accountId){
-		this.accountId = accountId;
+	public Trader(Config.PredictorConfig config){
+		this.config = config;
 		this.apiInterface = ApiClient.getPredictionApiInterface();
 		this.context = ApiClient.getContext();
 	}
@@ -39,7 +38,7 @@ public class Trader {
 			@Override
 			public Call<Prediction> getCall() {
 				Log.LOGGER.info(String.format("[+]Getting Predictions for %s/%s ...", baseCurrency, quoteCurrency));
-				return apiInterface.fetchPrediction(baseCurrency, quoteCurrency);
+				return apiInterface.fetchPrediction(baseCurrency, quoteCurrency, config.getId());
 			}
 
 
@@ -66,7 +65,7 @@ public class Trader {
 
 			@Override
 			public List<Instrument> executeTask() throws ExecuteException, RequestException {
-				return context.account.instruments(Config.ACCOUNT_ID).getInstruments();
+				return context.account.instruments(config.getAccountID()).getInstruments();
 			}
 		}.run();
 
@@ -94,7 +93,7 @@ public class Trader {
 		if(action == TradeAction.STALL)
 			return null;
 
-		OrderCreateRequest request = new OrderCreateRequest(accountId);
+		OrderCreateRequest request = new OrderCreateRequest(config.getAccountID());
 
 		Pair<String, TradeAction> instrumentActionPair = getProperInstrumentActionPair(baseCurrency, quoteCurrency, action);
 
@@ -123,7 +122,7 @@ public class Trader {
 
 			@Override
 			public TradeCloseResponse executeTask() throws ExecuteException, RequestException {
-				return context.trade.close(new TradeCloseRequest(accountId, new TradeSpecifier(transactionId.toString())));
+				return context.trade.close(new TradeCloseRequest(config.getAccountID(), new TradeSpecifier(transactionId.toString())));
 			}
 		}.run();
 
@@ -139,7 +138,7 @@ public class Trader {
 
 			@Override
 			public List<Trade> executeTask() throws ExecuteException, RequestException {
-				return context.trade.listOpen(Config.ACCOUNT_ID).getTrades();
+				return context.trade.listOpen(config.getAccountID()).getTrades();
 			}
 		}.run();
 
@@ -161,7 +160,7 @@ public class Trader {
 
 	public int getUnits(){
 		Log.LOGGER.info("Getting Units...");
-		return (5000/Config.CURRENCIES.size());
+		return (5000/(config.getBaseCurrencies().size() * config.getQuoteCurrencies().size()));
 	}
 
 	public enum TradeAction {

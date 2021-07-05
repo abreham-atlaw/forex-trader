@@ -1,11 +1,5 @@
 package com.forextrader.core;
 
-import com.forextrader.core.exceptions.InstrumentUnavailableException;
-import com.oanda.v20.ExecuteException;
-import com.oanda.v20.RequestException;
-import com.oanda.v20.account.AccountID;
-
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -16,22 +10,29 @@ public class AutoTrader extends Trader{
 
 	private final Timer timer = new Timer();
 
-	public AutoTrader(AccountID accountId) {
-		super(accountId);
+
+	public AutoTrader(Config.PredictorConfig config) {
+		super(config);
 	}
 
-	private void tradeRound(String base_currency, List<String> currencies){
-		for(String currency : currencies){
-			try{
-				trade(base_currency, currency);
+	private void tradeRound(List<String> base_currencies, List<String> quote_currencies){
+
+		for(String base_currency: base_currencies){
+
+			for(String quote_currency: quote_currencies){
+				try{
+					trade(base_currency, quote_currency);
+				}
+				catch (Exception ex){
+					Log.LOGGER.severe(ex.getMessage());
+				}
 			}
-			catch (Exception e) {
-				Log.LOGGER.severe(e.getMessage());
-			}
+
 		}
+
 	}
 
-	public void start(String base_currency, List<String> currencies){
+	public void start(){
 		Log.LOGGER.info("[+]Starting Auto Trading...");
 
 		long delay = LocalDateTime.now().until(Config.START_DATE, ChronoUnit.MILLIS);
@@ -42,7 +43,7 @@ public class AutoTrader extends Trader{
 			public void run() {
 				try {
 					closeAllOpenTrades();
-					tradeRound(base_currency, currencies);
+					tradeRound(config.getBaseCurrencies(), config.getQuoteCurrencies());
 				}
 				catch (Exception ex){
 					Log.LOGGER.severe("tradeRound failed with exception: ");
@@ -50,10 +51,6 @@ public class AutoTrader extends Trader{
 				}
 			}
 		}, delay, Config.TRADE_PERIOD_GAP);
-	}
-
-	public void start(){
-		this.start(Config.BASE_CURRENCY, Config.CURRENCIES);
 	}
 
 }

@@ -11,8 +11,9 @@ import java.io.IOException;
 public class ApiInterfaceTest {
 
 	private static PredictionApiInterface apiInterface;
-	private static final String BASE_CURRENCY = "USD";
-	private static final String QUOTE_CURRENCY = "EUR";
+	private static final String BASE_CURRENCY = "GBP";
+	private static final String QUOTE_CURRENCY = "USD";
+	private static final String MODEL_ID = "1";
 
 	@BeforeAll
 	static void setup(){
@@ -26,7 +27,7 @@ public class ApiInterfaceTest {
 
 		Prediction prediction = null;
 		try {
-			prediction = apiInterface.fetchPrediction(BASE_CURRENCY, QUOTE_CURRENCY).execute().body();
+			prediction = apiInterface.fetchPrediction(BASE_CURRENCY, QUOTE_CURRENCY, MODEL_ID).execute().body();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

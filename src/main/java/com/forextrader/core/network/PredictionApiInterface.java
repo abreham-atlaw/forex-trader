@@ -10,7 +10,7 @@ import java.util.List;
 public interface PredictionApiInterface {
 
 	@GET("prediction/")
-	Call<Prediction> fetchPrediction(@Query("base_currency") String baseCurrency, @Query("quote_currency") String quoteCurrency);
+	Call<Prediction> fetchPrediction(@Query("base_currency") String baseCurrency, @Query("quote_currency") String quoteCurrency, @Query("model_id") String model_id);
 
 	@GET("prediction/")
 	Call<List<Prediction>> fetchAllPredictions();

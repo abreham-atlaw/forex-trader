@@ -3,9 +3,16 @@ package com.forextrader.core;
 public class Main {
 
 	public static void main(String[] args){
+		startThreads();
+	}
 
-		AutoTrader trader = new AutoTrader(Config.ACCOUNT_ID);
-		trader.start();
-
+	private static void startThreads(){
+		Log.LOGGER.info("[+]Startxing Trading threads...");
+		for(Config.PredictorConfig config : Config.PREDICTOR_CONFIGS){
+			new Thread(() -> {
+				AutoTrader trader = new AutoTrader(config);
+				trader.start();
+			}).start();
+		}
 	}
 }
