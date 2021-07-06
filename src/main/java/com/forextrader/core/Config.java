@@ -29,7 +29,7 @@ public class Config {
 	).plusDays(1);
 
 	public static final String TRADING_URL = "https://api-fxpractice.oanda.com";
-	public static final String TOKEN = "ac9b3847d8d45b0f2353f0a805247505-414f1b70e8a6adfe635a39bae20116ee"; //UNSAFE. Use an environment variable like System.getenv("OANDA_TOKEN");
+	public static final String TOKEN = "OANDA_TOKEN"; //UNSAFE. Use an environment variable like System.getenv("OANDA_TOKEN");
 	public static final AccountID TEST_ACCOUNT_ID = new AccountID("101-001-19229086-002");
 	public static final String APPLICATION_NAME = "Trader";
 
