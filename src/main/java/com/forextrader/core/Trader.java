@@ -110,7 +110,8 @@ public class Trader {
 
 			@Override
 			public OrderCreateResponse executeTask() throws ExecuteException, RequestException {
-				return context.order.create(request);
+				OrderCreateResponse value =  context.order.create(request);
+				return value;
 			}
 		}.run().getOrderFillTransaction().getId();
 
@@ -160,7 +161,7 @@ public class Trader {
 
 	public int getUnits(){
 		Log.LOGGER.info("Getting Units...");
-		return (5000/(config.getBaseCurrencies().size() * config.getQuoteCurrencies().size()));
+		return (1500/(config.getBaseCurrencies().size() * config.getQuoteCurrencies().size()));
 	}
 
 	public enum TradeAction {
