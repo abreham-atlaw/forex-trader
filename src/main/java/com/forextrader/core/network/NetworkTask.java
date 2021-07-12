@@ -27,7 +27,7 @@ public abstract class NetworkTask<T> {
 				retries--;
 				Log.LOGGER.warning(String.format("Network Failure. %d tries left. Sleeping", retries));
 				Thread.sleep(Config.NETWORK_SLEEP);
-				return execute();
+				return run();
 			}
 			Log.LOGGER.severe("Network Failure Quitting Tries");
 			throw e;
