@@ -2,9 +2,7 @@ package com.forextrader.core;
 
 import com.oanda.v20.account.AccountID;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +13,7 @@ public class Config {
 
 	public static final boolean DEBUG = false;
 	public static final int NETWORK_RETRIES = 10;
-	public static final int NETWORK_SLEEP = 2*60*1000;
+	public static final int NETWORK_SLEEP = 3*60*1000;
 	public static final String LOG_PATH = "./trader.log";
 	public static final boolean CONSOLE_LOG = true;
 	public static final int TRADE_PERIOD_GAP = 24*60*60*1000;
@@ -30,7 +28,6 @@ public class Config {
 
 	public static final String TRADING_URL = "https://api-fxpractice.oanda.com";
 	public static final String TOKEN = "OANDA_TOKEN"; //UNSAFE. Use an environment variable like System.getenv("OANDA_TOKEN");
-	public static final AccountID TEST_ACCOUNT_ID = new AccountID("101-001-19229086-002");
 	public static final String APPLICATION_NAME = "Trader";
 
 	public static final String PREDICTION_URL = "https://fpredictor.herokuapp.com";
@@ -77,7 +74,7 @@ public class Config {
 	);
 
 	public static final List<PredictorConfig> TEST_PREDICTOR_CONFIGS = Arrays.asList(
-			new PredictorConfig(
+		new PredictorConfig(
 					"0",
 					new AccountID("101-001-19229086-001"),
 					Collections.singletonList("USD"),
