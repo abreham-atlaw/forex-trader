@@ -44,4 +44,5 @@ public class Log {
 		setup(Config.CONSOLE_LOG, Config.LOG_PATH);
 	}
 
+
 }
