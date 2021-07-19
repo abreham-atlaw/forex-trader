@@ -98,6 +98,7 @@ public class Trader {
 		Pair<String, TradeAction> instrumentActionPair = getProperInstrumentActionPair(baseCurrency, quoteCurrency, action);
 
 		int units = getUnits();
+		Log.LOGGER.info(String.format("[+]Units: %d", units));
 		if(instrumentActionPair.getSecond() == TradeAction.SELL)
 			units *= -1;
 
@@ -161,7 +162,7 @@ public class Trader {
 
 	public int getUnits(){
 		Log.LOGGER.info("Getting Units...");
-		return (1500/(config.getBaseCurrencies().size() * config.getQuoteCurrencies().size()));
+		return (1300/(config.getBaseCurrencies().size() * config.getQuoteCurrencies().size()));
 	}
 
 	public enum TradeAction {
