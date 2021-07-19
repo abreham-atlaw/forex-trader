@@ -33,7 +33,7 @@ public class Config {
 	public static final String PREDICTION_URL = "https://fpredictor.herokuapp.com";
 
 	public static final List<PredictorConfig> PREDICTOR_CONFIGS = Arrays.asList(
-			new PredictorConfig(
+/**			new PredictorConfig(
 					"0",
 					new AccountID("101-001-19229086-003"),
 					Collections.singletonList("USD"),
@@ -56,20 +56,27 @@ public class Config {
 							//	"TWD",  // Taiwan
 							"GBP"   // United Kingdom -
 					)
-			),
+			),*/
 
 			new PredictorConfig(
 					"1",
 					new AccountID("101-001-19229086-004"),
-					Collections.singletonList("GBP"),
-					Collections.singletonList("USD")
+					Collections.singletonList("USD"),
+					Collections.singletonList("GBP")
 			),
 
 			new PredictorConfig(
 					"2",
 					new AccountID("101-001-19229086-005"),
-					Collections.singletonList("GBP"),
-					Collections.singletonList("USD")
+					Collections.singletonList("USD"),
+					Collections.singletonList("GBP")
+			),
+
+			new PredictorConfig(
+					"3",
+					new AccountID("101-001-19229086-006"),
+					Collections.singletonList("USD"),
+					Collections.singletonList("GBP")
 			)
 	);
 
